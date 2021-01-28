@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-type Person struct {
+type Person1 struct {
 	name string
 	age  int
 }
@@ -28,7 +28,7 @@ func main() {
 	fmt.Println(sum)
 	fmt.Println(condition("Ruby"))
 
-	var mike Person
+	var mike Person1
 	mike.name = "Mike"
 	mike.age = 23
 
@@ -54,4 +54,29 @@ func condition(arg string) string {
 	default:
 		return "I don't know what this is"
 	}
+}
+
+type Person struct {
+	Name string
+	Age  int
+}
+
+func pointerFunc() {
+	p := Person{
+		Name: "太郎",
+		Age:  20,
+	}
+
+	fmt.Printf("最初のp :%+v\n", p)
+
+	p2 := p
+	p2.Name = "二郎"
+	p2.Age = 21
+	fmt.Printf("p2で二郎に書き換えを行なったはずのp :%+v\n", p)
+
+	p3 := &p
+	p3.Name = "二郎"
+	p3.Age = 21
+
+	fmt.Printf("p3で二郎に書き換えを行なったp :%+v\n", p)
 }
